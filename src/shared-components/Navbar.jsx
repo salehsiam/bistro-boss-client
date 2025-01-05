@@ -52,7 +52,7 @@ const Navbar = () => {
           <li>
             <details>
               <summary>Parent</summary>
-              <ul className="p-2">
+              <ul className="p-2 bg-slate-500">
                 <li>
                   <a>Submenu 1</a>
                 </li>

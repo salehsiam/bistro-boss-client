@@ -3,7 +3,7 @@ import service from "./../../assets/assets/home/chef-service.jpg";
 const Description = () => {
   return (
     <div
-      className="py-24 object-center mb-12"
+      className="py-24 bg-center mb-12 bg-fixed"
       style={{
         backgroundImage: `url('${service}')`,
       }}
