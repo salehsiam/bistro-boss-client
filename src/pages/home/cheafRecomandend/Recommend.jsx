@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
 import SectionTitle from "../../../shared-components/SectionTitle";
-import { data } from "autoprefixer";
-import RecommendCart from "./RecommendCart";
+import useMenu from "../../../hooks/UseMenu";
+import ItemCard from "../../../shared-components/ItemCard";
 
 const Recommend = () => {
-  const [recommendData, setRecommendData] = useState([]);
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const recommendItem = data.filter(
-          (item) => item.category === "offered"
-        );
-        setRecommendData(recommendItem);
-      });
-  }, []);
+  // const [recommendData, setRecommendData] = useState([]);
+  const [menu] = useMenu();
+  const recommendItem = menu.filter((item) => item.category === "offered");
+
   return (
     <div className="mb-16">
       <SectionTitle
@@ -22,11 +14,13 @@ const Recommend = () => {
         subHeading="---Should Try---"
       ></SectionTitle>
       <div className="grid grid-cols-3 gap-10">
-        {recommendData.map((recommend) => (
-          <RecommendCart
+        {recommendItem.map((recommend) => (
+          <ItemCard
+            image={recommend.image}
+            name={recommend.name}
+            recipe={recommend.recipe}
             key={recommend._id}
-            recommend={recommend}
-          ></RecommendCart>
+          ></ItemCard>
         ))}
       </div>
     </div>
